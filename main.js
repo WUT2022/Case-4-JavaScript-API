@@ -1,32 +1,106 @@
 // document.body.innerHTML = "testing"
 // UNlVhtIyqAzN6ipcOKa5AzL6yIbIQ2BBMXgDKvcb
-
+const key = "UNlVhtIyqAzN6ipcOKa5AzL6yIbIQ2BBMXgDKvcb"
 
 
 // async function getNASA() {
- //   const response = await fetch('https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=UNlVhtIyqAzN6ipcOKa5AzL6yIbIQ2BBMXgDKvcb')
- fetch('https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=UNlVhtIyqAzN6ipcOKa5AzL6yIbIQ2BBMXgDKvcb')  
-.then(response => response.json())
-.then(data => {
-    pictures = data.photos
-    console.log(data.photos[2].img_src)
-    document.body.innerHTML += `<img src="${data.photos[2].img_src}" alt="Girl in a jacket" width="500" height="600">` 
+let inputText = document.getElementById('input-text');
 
-})
+let card = document.querySelector('.card')
+let url = "https://images-api.nasa.gov/search?q=star"
+let moon = "moon";
+let startButton = document.querySelector('.start')
 
-//     const pic1 = nasa.photos[5].img_src
-//     console.log(pic1)
-//     // document.getElementById('test').innerHTML += `${pic1}`
-//     document.body.innerHTML += `${pic1}`
-
-// }
 
 function makeImg(img) {
-    return `<img src="${img}" alt="Girl in a jacket" width="500" height="600"> `
+    return `<img src="${img}" alt="Girl in a jacket" width="500" height="600">`
 }
 
-//const result = makeImg(get[0])
+startButton.addEventListener('click', (e) => {
+    e.preventDefault()
+    console.log("hej")
+    fetch(`https://images-api.nasa.gov/search?q=${moon}`)
+        .then(response => response.json())
+        .then(data => {
+            // item = data.collection.items
+          let item = data.collection.items[0].links[0].href
 
-//makeImg(pic1)
-makeImg()
+//item.forEach((element) => console.log(element));
+
+
+
+          
+         
+            console.log(item.length)
+            card.innerHTML += `<img src="${item}" alt="Girl in a jacket" width="500" height="600">`
+       
+       
+        });
+
+    })
+    
+    
+       
+       
+       
+            //   item.map(makeImg) = toHTML
+        //     card.innerHTML = toHTML
+            
+          //  imgs = item.map(makeImg)
+          
+           // console.log(imgs)
+          //  card.innerHTML = `<img src="${imgs}" alt="Girl in a jacket" width="500" height="600">`
+            // console.log(data.collection)
+          
+
+         //   let result = Array.isArray(item)
+          //  if (result === true) {
+     
+                // imgs.forEach(item => {
+                //     console.log(item)
+                //      imgs = new Image()
+                //     imgs.src = item.links[0].href
+                //     card.appendChild(imgs)
+                //    // document.body.innerHTML = imgs
+                // })
+
+// fetch(`https://images-api.nasa.gov/search?q=${moon}`)
+//     .then(response => response.json())
+//     .then(data => {
+//        // items = data.collection.item
+
+//        // console.log(data.collection)
+//         let item = data.collection.items
+//         console.log(item)
+//         item.forEach(item => {
+//           //  console.log(item)
+//             let img = new Image()
+//             img.src = item.links[0].href
+//             card.appendChild(img)
+//         });
+
+//     });
+
+//kontrollera links är en array innan man försöker visa dator
+
+// fetch(url)
+//     .then((response) => response.json())
+//     .then((data) => {
+//         console.log(data.collection)
+//         let items = data.collection.items
+//         items.forEach(item => {
+//             console.log(item)
+//             let img = new Image()
+//             img.src = item.links[0].href
+//             card.appendChild(img)
+//         });
+//     })
+
+//card.innerHTML = `<img src="${pictures}" alt="Girl in a jacket" width="500" height="600">`
+// document.body.innerHTML += `<img src="${pictures}" alt="Girl in a jacket" width="500" height="600">`
+
+
+
+
+
 //getNASA()
