@@ -6,7 +6,7 @@ const key = "UNlVhtIyqAzN6ipcOKa5AzL6yIbIQ2BBMXgDKvcb"
 // async function getNASA() {
 let inputText = document.getElementById('input-text');
 
-let card = document.querySelector('.card')
+let card = document.querySelector('.launchSpace')
 let url = "https://images-api.nasa.gov/search?q=star"
 let moon = "moon";
 let startButton = document.querySelector('.start')

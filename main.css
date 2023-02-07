@@ -1,8 +1,149 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
 body {
+    display: flex;
+}
+    /* stretchar ut på höjden */
+.left {
+    position: relative;
+
+    height: 100vh;
+    width: 100vh;
+    background: linear-gradient(180deg, #11162F 0%, rgba(97, 124, 249, 0.34) 102.57%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.card-m {
+    position: relative;
+    min-height: 400px;
+    width: 600px;
+    border-radius: 2rem;
+    border: 1px solid black;
+    z-index: 99;
+}
+
+.card-m .logo {
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
+    font-size: 3rem;
+}
+
+.card-m .number {
+    position: absolute;
+    font-size: 2.5rem;
+    left: 3rem;
+    bottom: 8rem;
+}
+
+.card-m .name {
+    position: absolute;
+    bottom: 5rem;
+    left: 3rem;
+}
+
+.card-m .valid {
+    position: absolute;
+    bottom: 5rem;
+    right: 3rem;
+}
+
+.left .card-m {
+    background: linear-gradient(127.28deg, rgba(255, 255, 255, 0.7) 1.53%, rgba(255, 255, 255, 0.3) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(10px);
+    /* Note: backdrop-filter has minimal browser support */
+    border-radius: 2rem;
+    z-index: 4;
+}
+
+.left .card-m .number,
+.left .card-m .name,
+.left .card-m .valid {
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 600;
+    text-shadow: 0px 7px 3px rgba(0, 0, 0, 0.15);
+    letter-spacing: 4px;
+}
+
+.left .card-m .logo {
+    color: white;
+    background: linear-gradient(180deg, #11162F 0%, rgba(97, 124, 249, 0.34) 102.57%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent ;
+}
+
+.circle-1,
+.circle-2,
+.circle-3 {
+    background: linear-gradient(142deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.2) 90.41%);
+    height: 10rem;
+    width: 10rem;
+    border-radius: 50%;
+    z-index: -8;
+    position: absolute;
+
+}
+
+.circle-1 {
+    animation: circle1 10s alternate ;
+    /* transform: translate(305px, 80px); */
+    right: -10px;
+    bottom: -40px;
+    border: 1px solid gold;
+}
+
+.circle-2 {
+    animation: circle2 10s alternate backwards;
+    transform: translate(-265px, -100px);
+    border: 1px solid rgb(0, 255, 110);
+}
+
+.circle-3 {
+    animation: circle3 10s alternate backwards;
+    transform: translate(20px, 190px);
+    border: 1px solid rgb(247, 0, 255);
+}
+
+@keyframes circle1{
+   0%{
+    transform: translate(0px, 0px);
+   }
+    20% {
+        transform: translate(-5%,5%);
+    }
+    40% {
+        transform: translate(-20%,20%);
+    }
+60%
+ {
+    transform: translate(-60%,30%);
+ }
+80% {
+    transform: translate(-80%,50%);
+}
+100% {
+    transform: translate(-100%,70%);
+}
+}
+/* body {
     position: relative;
 max-width: 414px;
 height: 721px;
 
 background: linear-gradient(180deg, #11162F 0%, rgba(97, 124, 249, 0.34) 102.57%);
 }
-
+ */
