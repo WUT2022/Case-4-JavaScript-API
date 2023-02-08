@@ -16,30 +16,7 @@ const button = document.querySelector('button');
 const content = document.getElementById("content");
 const ajaxSpinner = document.querySelector('#ajaxSpinner')
 
-button.addEventListener('click', () => {
-    console.log("click")
-   
 
-    // visa ajax spinner
-
-    // ajaxSpinner.classList.toggle("hidden");
-    ajaxSpinner.classList = ""
-
-    // cursor progress
-    button.className = "progress"
-//vänta på något, som en setTimeout,här en anonym funktion
-
-// väntar 2 sekunder, 2000 millisekunder på att något ska hända
-    setTimeout(() => {
-        content.textContent = "hejhej, button klickad";
-        button.className = ""
-
-        // dölj ajax spinner, bara en klass? className
-        ajaxSpinner.classList = "hidden";
-
-    }, 2000)
-
-})
 
 function makeImg(img) {
     return `<img src="${img}" alt="Girl in a jacket" width="500" height="600">`
@@ -67,8 +44,10 @@ function makeImg(img) {
 
 // 
     
-  startButton.addEventListener('click', (e) => {
+  startButton.addEventListener('click',  (e) => {
+   
     e.preventDefault()
+    ajax()
 fetch(`https://images-api.nasa.gov/search?q=${moon}`)
     .then(response => response.json())
     .then(data => {
@@ -76,11 +55,11 @@ fetch(`https://images-api.nasa.gov/search?q=${moon}`)
 
        // console.log(data.collection)
         let items = data.collection.items
-        console.log(items)
+        //console.log(items)
      //   let newItems = items.filter()
         items.forEach(item => {
             if (item.links ) {
-            console.log(item)
+          //      console.log(item)
             const img = document.createElement("img");
            // let img = new Image(200, 300)
             img.src = item.links[0].href
@@ -97,8 +76,32 @@ fetch(`https://images-api.nasa.gov/search?q=${moon}`)
 
   });
 
+  function ajax(e)  {
+    console.log("click")
+   
 
+    // visa ajax spinner
+
+    // ajaxSpinner.classList.toggle("hidden");
+    ajaxSpinner.classList = ""
+
+    // cursor progress
+    startButton.className = "progress"
+//vänta på något, som en setTimeout,här en anonym funktion
+
+// väntar 2 sekunder, 2000 millisekunder på att något ska hända
+    setTimeout(() => {
+        content.textContent = "hejhej, startButton klickad";
+        startButton.className = ""
+
+        // dölj ajax spinner, bara en klass? className
+        ajaxSpinner.classList = "hidden";
+
+    }, 2000)
+
+}
        
+console.log(ajax)
    // item.forEach((element) => console.log(element));
        
             //   item.map(makeImg) = toHTML
