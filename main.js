@@ -8,40 +8,98 @@ let inputText = document.getElementById('input-text');
 
 let card = document.querySelector('.launchSpace')
 let url = "https://images-api.nasa.gov/search?q=star"
-let moon = "moon";
+let moon = "nasa";
 let startButton = document.querySelector('.start')
 
+
+const button = document.querySelector('button');
+const content = document.getElementById("content");
+const ajaxSpinner = document.querySelector('#ajaxSpinner')
+
+button.addEventListener('click', () => {
+    console.log("click")
+   
+
+    // visa ajax spinner
+
+    // ajaxSpinner.classList.toggle("hidden");
+    ajaxSpinner.classList = ""
+
+    // cursor progress
+    button.className = "progress"
+//vänta på något, som en setTimeout,här en anonym funktion
+
+// väntar 2 sekunder, 2000 millisekunder på att något ska hända
+    setTimeout(() => {
+        content.textContent = "hejhej, button klickad";
+        button.className = ""
+
+        // dölj ajax spinner, bara en klass? className
+        ajaxSpinner.classList = "hidden";
+
+    }, 2000)
+
+})
 
 function makeImg(img) {
     return `<img src="${img}" alt="Girl in a jacket" width="500" height="600">`
 }
 
-startButton.addEventListener('click', (e) => {
+
+
+// startButton.addEventListener('click', (e) => {
+//     e.preventDefault()
+//     console.log("hej")
+//     fetch(`https://images-api.nasa.gov/search?q=${moon}`)
+//         .then(response => response.json())
+//         .then(data => {
+//             // item = data.collection.items
+//           let item = data.collection.items[0].links[0].href
+
+
+
+//             console.log(item)
+//              card.innerHTML += `<img src="${item}" alt="Girl in a jacket" width="300" height="400">`
+       
+//         });
+
+//     })
+
+// 
+    
+  startButton.addEventListener('click', (e) => {
     e.preventDefault()
-    console.log("hej")
-    fetch(`https://images-api.nasa.gov/search?q=${moon}`)
-        .then(response => response.json())
-        .then(data => {
-            // item = data.collection.items
-          let item = data.collection.items[0].links[0].href
+fetch(`https://images-api.nasa.gov/search?q=${moon}`)
+    .then(response => response.json())
+    .then(data => {
+       // items = data.collection.item
 
-//item.forEach((element) => console.log(element));
-
-
-
-          
-         
-            console.log(item.length)
-            card.innerHTML += `<img src="${item}" alt="Girl in a jacket" width="500" height="600">`
-       
-       
+       // console.log(data.collection)
+        let items = data.collection.items
+        console.log(items)
+     //   let newItems = items.filter()
+        items.forEach(item => {
+            if (item.links ) {
+            console.log(item)
+            const img = document.createElement("img");
+           // let img = new Image(200, 300)
+            img.src = item.links[0].href
+            card.appendChild(img)
+            // document.querySelector('.card').innerHTML += img
+            
+        }
         });
 
-    })
-    
-    
+    }).catch(error => {
+        console.log("error något är fel", error)
+        // code to run if there are any problems
+       }) 
+
+  });
+
+
        
-       
+   // item.forEach((element) => console.log(element));
        
             //   item.map(makeImg) = toHTML
         //     card.innerHTML = toHTML

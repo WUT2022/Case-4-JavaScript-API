@@ -8,9 +8,26 @@
 }
 
 body {
-    display: flex;
+    display: flex;   width: 100vh;
 }
-    /* stretchar ut på höjden */
+
+.hidden {
+    display: none;
+}
+
+
+
+span#ajaxSpinner svg {
+    width: 1rem !important; 
+    height: 1rem !important;
+}
+
+
+button.progress {
+    cursor: progress;
+}
+
+/* stretchar ut på höjden */
 .left {
     position: relative;
 
@@ -83,7 +100,7 @@ body {
     background: linear-gradient(180deg, #11162F 0%, rgba(97, 124, 249, 0.34) 102.57%);
     -webkit-background-clip: text;
     background-clip: text;
-    -webkit-text-fill-color: transparent ;
+    -webkit-text-fill-color: transparent;
 }
 
 .circle-1,
@@ -99,7 +116,7 @@ body {
 }
 
 .circle-1 {
-    animation: circle1 10s alternate ;
+    animation: circle1 10s alternate;
     /* transform: translate(305px, 80px); */
     right: -10px;
     bottom: -40px;
@@ -107,7 +124,7 @@ body {
 }
 
 .circle-2 {
-    animation: circle2 10s alternate backwards;
+    animation: circle2 15s alternate backwards;
     transform: translate(-265px, -100px);
     border: 1px solid rgb(0, 255, 110);
 }
@@ -118,27 +135,84 @@ body {
     border: 1px solid rgb(247, 0, 255);
 }
 
-@keyframes circle1{
-   0%{
-    transform: translate(0px, 0px);
-   }
+@keyframes circle1 {
+    0% {
+        transform: translate(0px, 0px);
+    }
+
     20% {
-        transform: translate(-5%,5%);
+        transform: translate(-5%, 5%);
     }
+
     40% {
-        transform: translate(-20%,20%);
+        transform: translate(-20%, 20%);
     }
-60%
- {
-    transform: translate(-60%,30%);
- }
-80% {
-    transform: translate(-80%,50%);
+
+    60% {
+        transform: translate(-60%, 30%);
+    }
+
+    80% {
+        transform: translate(-80%, 50%);
+    }
+
+    100% {
+        transform: translate(-100%, 70%);
+    }
 }
-100% {
-    transform: translate(-100%,70%);
+
+@keyframes circle2 {
+    0% {
+        transform: translate(0px, 0px);
+    }
+
+    20% {
+        transform: translate(-5%, 5%);
+    }
+
+    40% {
+        transform: translate(-20%, 20%);
+    }
+
+    60% {
+        transform: translate(-60%, 30%);
+    }
+
+    80% {
+        transform: translate(-80%, 50%);
+    }
+
+    100% {
+        transform: translate(-100%, 70%);
+    }
 }
+
+@keyframes circle3 {
+    0% {
+        transform: translate(200px, 0px);
+    }
+
+    20% {
+        transform: translate(-5%, 5%);
+    }
+
+    40% {
+        transform: translate(-20%, 20%);
+    }
+
+    60% {
+        transform: translate(-60%, 30%);
+    }
+
+    80% {
+        transform: translate(-80%, 50%);
+    }
+
+    100% {
+        transform: translate(-100%, 70%);
+    }
 }
+
 /* body {
     position: relative;
 max-width: 414px;
