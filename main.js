@@ -45,9 +45,19 @@ function makeImg(img) {
 // 
     
   startButton.addEventListener('click',  (e) => {
-   
+    
     e.preventDefault()
-    ajax()
+     // ajaxSpinner.classList.toggle("hidden");
+     ajaxSpinner.classList = ""
+
+     // cursor progress
+     startButton.className = "progress"
+
+     setTimeout(() => {
+        content.textContent = "Lets go!";
+        startButton.className = ""
+
+   
 fetch(`https://images-api.nasa.gov/search?q=${moon}`)
     .then(response => response.json())
     .then(data => {
@@ -73,35 +83,13 @@ fetch(`https://images-api.nasa.gov/search?q=${moon}`)
         console.log("error något är fel", error)
         // code to run if there are any problems
        }) 
-
+       .finally(() => {
+        ajaxSpinner.classList = "hidden";
+       });
+    }, 3000);
   });
 
-  function ajax(e)  {
-    console.log("click")
-   
 
-    // visa ajax spinner
-
-    // ajaxSpinner.classList.toggle("hidden");
-    ajaxSpinner.classList = ""
-
-    // cursor progress
-    startButton.className = "progress"
-//vänta på något, som en setTimeout,här en anonym funktion
-
-// väntar 2 sekunder, 2000 millisekunder på att något ska hända
-    setTimeout(() => {
-        content.textContent = "hejhej, startButton klickad";
-        startButton.className = ""
-
-        // dölj ajax spinner, bara en klass? className
-        ajaxSpinner.classList = "hidden";
-
-    }, 2000)
-
-}
-       
-console.log(ajax)
    // item.forEach((element) => console.log(element));
        
             //   item.map(makeImg) = toHTML
