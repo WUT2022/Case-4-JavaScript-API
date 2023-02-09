@@ -8,7 +8,7 @@
 }
 
 img {
-    width: 380px;
+    width: 300px;
     height: auto;
     /* display: flex;
     align-items: center;
@@ -22,23 +22,33 @@ body {
     align-items: center;
     justify-content: center;
 }
+footer {
+    text-align: center;
+    margin-bottom: 0px;
+}
+
+marquee {
+    margin-top: 0.5rem;
+}
 
 .hidden {
     display: none;
 }
 
-.start {
-    font-size: 2rem;
+.start  {
+    margin: 20px;
+    padding: 5px;
+    background-color: red;
 }
 
 span#ajaxSpinner svg {
-    width: 2rem !important; 
-    height: 2rem !important;
+    width: 3rem !important; 
+    height: 3rem !important;
 }
 
-
-button.progress {
-    cursor: progress;
+#descriptionText {
+    text-align: center;
+    margin-top: 2rem;
 }
 
 /* stretchar ut på höjden */
@@ -46,12 +56,14 @@ body {
     /* position: relative; */
 
     height: 736px;
-    width: 414px;
+    width: 370px;
     
     background: linear-gradient(180deg, #11162F 0%, rgba(97, 124, 249, 0.34) 102.57%);
     display: flex;
     align-items: center;
     justify-content: center;
+    /* margin-top: 2rem;
+    margin-bottom: 2rem; */
 }
 
 .launchSpace {
@@ -60,23 +72,26 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
+       overflow: scroll;
     /* margin-left: 50%; */
 }
 
-.card-m {
+.launchSpace #input-text {
+    margin-top: 1rem ;
+}
+
+.hero {
     position: relative;
-    min-height: 500px;
-    max-height: 750px;
-    width: 380px;
-    border-radius: 2rem;
-    border: 1px solid black;
-    z-index: 99;
-    overflow: scroll;
+    min-height: 600px;
+    max-height: 730px;
+    width: 305px;
+  
+    /* overflow: scroll; */
 }
 
 
 
- .card-m {
+ .hero {
     background: linear-gradient(127.28deg, rgba(255, 255, 255, 0.7) 1.53%, rgba(255, 255, 255, 0.3) 100%);
     border: 1px solid rgba(255, 255, 255, 0.5);
     box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.25);
@@ -86,22 +101,7 @@ body {
     z-index: 4;
 }
 
-.content-el .card-m .number,
-.content-el .card-m .name,
-.content-el .card-m .valid {
-    color: rgba(255, 255, 255, 0.8);
-    font-weight: 600;
-    text-shadow: 0px 7px 3px rgba(0, 0, 0, 0.15);
-    letter-spacing: 4px;
-}
 
-.content-el .card-m .logo {
-    color: white;
-    background: linear-gradient(180deg, #11162F 0%, rgba(97, 124, 249, 0.34) 102.57%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
 
 .circle-1,
 .circle-2,
@@ -116,28 +116,38 @@ body {
 }
 
 .circle-1 {
-    animation: circle1 10s alternate;
-    /* transform: translate(305px, 80px); */
-    right: -10px;
-    bottom: -40px;
-    border: 1px solid gold;
+    animation: circle1 20s linear infinite alternate;
+     transform: translate(305px, 80px); 
+    right: -20px;
+    bottom: 40px;
+    /* border: 1px solid gold; */
 }
 
-.circle-2 {
-    animation: circle2 15s alternate backwards;
+ .circle-2 {
+    animation: circle2 16s linear infinite alternate;
     transform: translate(-265px, -100px);
-    border: 1px solid rgb(0, 255, 110);
+    right: 50px;
+    bottom: 50px;
+    /* border: 1px solid rgb(0, 255, 110); */
 }
 
 .circle-3 {
-    animation: circle3 10s alternate backwards;
+    animation: circle3 18s linear infinite alternate;
     transform: translate(20px, 190px);
-    border: 1px solid rgb(247, 0, 255);
-}
+    right: -10px;
+    bottom: 400px;
+    /* border: 1px solid rgb(247, 0, 255); */
+} 
 
-@keyframes circle1 {
+/* .container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+  } */
+
+/* @keyframes circle1 {
     0% {
-        transform: translate(0px, 0px);
+        transform: translate(0%, 0%);
     }
 
     20% {
@@ -161,11 +171,69 @@ body {
     }
 }
 
-@keyframes circle2 {
-    0% {
-        transform: translate(0px, 0px);
-    }
 
+
+
+/* 
+
+
+  .circle1 {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    background-color: red;
+    top: 25%;
+    left: 25%;
+    animation: move1 4s linear infinite;
+    z-index: 99;
+  }
+
+  .circle2 {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    background-color: blue;
+    top: 50%;
+    left: 50%;
+    animation: move2 4s linear infinite;
+  }
+
+  .circle3 {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    background-color: green;
+    top: 75%;
+    left: 75%;
+    animation: move3 4s linear infinite;
+  } */
+
+  @keyframes circle1 {
+    from {
+      transform: translateX(-50%) translateY(-50%) rotate(0deg);
+    }
+    to {
+      transform: translateX(20%) translateY(-50%) rotate(360deg);
+    }
+  }
+
+  /* @keyframes circle2 {
+    from {
+      transform: translateX(-50%) translateY(-50%) rotate(90deg);
+    }
+    to {
+      transform: translateX(20%) translateY(-50%) rotate(450deg);
+    }
+  } */
+
+  @keyframes circle2 {
+    0% {
+        transform: translate(-50%, -50%);
+    }
+/* 
     20% {
         transform: translate(-5%, 5%);
     }
@@ -180,44 +248,44 @@ body {
 
     80% {
         transform: translate(-80%, 50%);
-    }
+    } */
 
     100% {
-        transform: translate(-100%, 70%);
+        transform: translate(100%, 110%);
     }
 }
 
 @keyframes circle3 {
     0% {
-        transform: translate(200px, 0px);
+        transform: translate(0%, -0%);
     }
 
-    20% {
+    /* 20% {
         transform: translate(-5%, 5%);
     }
 
     40% {
-        transform: translate(-20%, 20%);
+        transform: translate(80%, 20%);
     }
 
     60% {
-        transform: translate(-60%, 30%);
+        transform: translate(60%, 30%);
     }
 
     80% {
         transform: translate(-80%, 50%);
-    }
+    } */
 
     100% {
         transform: translate(-100%, 70%);
     }
-}
+} 
 
-/* body {
-    position: relative;
-max-width: 414px;
-height: 721px;
-
-background: linear-gradient(180deg, #11162F 0%, rgba(97, 124, 249, 0.34) 102.57%);
-}
- */
+  /* @keyframes circle3 {
+    from {
+      transform: translateX(-50%) translateY(-50%) rotate(180deg);
+    }
+    to {
+      transform: translateX(-20%) translateY(110%) rotate(540deg);
+    }
+  } */

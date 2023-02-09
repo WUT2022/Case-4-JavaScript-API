@@ -1,56 +1,38 @@
-// document.body.innerHTML = "testing"
-// UNlVhtIyqAzN6ipcOKa5AzL6yIbIQ2BBMXgDKvcb
+
 const key = "UNlVhtIyqAzN6ipcOKa5AzL6yIbIQ2BBMXgDKvcb"
 
-
-// async function getNASA() {
 let inputText = document.getElementById('input-text');
 
 let card = document.querySelector('.launchSpace')
-let url = "https://images-api.nasa.gov/search?q=star"
-let moon = "nasa";
+
+let url = ""
+ 
 let startButton = document.querySelector('.start')
 
-
 const button = document.querySelector('button');
+
 const content = document.getElementById("content");
-const ajaxSpinner = document.querySelector('#ajaxSpinner')
+
+const ajaxSpinner = document.querySelector('#ajaxSpinner');
 
 
 
 function makeImg(img) {
-    return `<img src="${img}" alt="Girl in a jacket" width="500" height="600">`
+    return `<img src="${img.links[0].href}" alt="bild från rymden" width="500" height="600">`
 }
 
 
 
-// startButton.addEventListener('click', (e) => {
-//     e.preventDefault()
-//     console.log("hej")
-//     fetch(`https://images-api.nasa.gov/search?q=${moon}`)
-//         .then(response => response.json())
-//         .then(data => {
-//             // item = data.collection.items
-//           let item = data.collection.items[0].links[0].href
 
 
-
-//             console.log(item)
-//              card.innerHTML += `<img src="${item}" alt="Girl in a jacket" width="300" height="400">`
-       
-//         });
-
-//     })
-
-// 
     
-  startButton.addEventListener('click',  (e) => {
-    
+  startButton.addEventListener('click' ,  (e) => {
+    const descriptionText = document.getElementById("descriptionText").checked;
+    console.log("click")
     e.preventDefault()
-     // ajaxSpinner.classList.toggle("hidden");
+
      ajaxSpinner.classList = ""
 
-     // cursor progress
      startButton.className = "progress"
 
      setTimeout(() => {
@@ -58,35 +40,67 @@ function makeImg(img) {
         startButton.className = ""
 
    
-fetch(`https://images-api.nasa.gov/search?q=${moon}`)
+fetch(`https://images-api.nasa.gov/search?q=${inputText.value}`)
     .then(response => response.json())
     .then(data => {
        // items = data.collection.item
 
        // console.log(data.collection)
         let items = data.collection.items
-        //console.log(items)
+        console.log(items)
+        let filteredItems = items.filter(item => item.data[0].description.includes('description'));
      //   let newItems = items.filter()
-        items.forEach(item => {
-            if (item.links ) {
-          //      console.log(item)
-            const img = document.createElement("img");
-           // let img = new Image(200, 300)
-            img.src = item.links[0].href
-            card.appendChild(img)
-            // document.querySelector('.card').innerHTML += img
-            
+     items.forEach(item => {
+
+     
+          
+          
+
+          console.log("if är sant true")
+          const img = document.createElement("img");
+          // let img = new Image(200, 300)
+           img.src = item.links[0].href
+        
+           // description.src = item.data[0].description
+           if (descriptionText === true) {
+
+           card.appendChild(img)
+           card.innerHTML += `<p>${item.data[0].description}</p>`
+        } else {
+          console.log("if är false falskt")
+          const img = document.createElement("img");
+          // let img = new Image(200, 300)
+           img.src = item.links[0].href
+        
+           card.appendChild(img)
         }
+          //   const img = document.createElement("img");
+          //  // let img = new Image(200, 300)
+          //   img.src = item.links[0].href
+         
+          //   // description.src = item.data[0].description
+        
+
+          //   card.appendChild(img)
+          //   card.innerHTML += `<p>${item.data[0].description}</p>`
+          //   // document.querySelector('.card').innerHTML += img
+            console.log(item.data[0].description)
+        // } else {
+        //     console.log("fakk")
+        // }
         });
+        console.log(filteredItems)
+      
 
     }).catch(error => {
         console.log("error något är fel", error)
         // code to run if there are any problems
+        card.innerHTML += `<h1>Nothing found!</h1>`
        }) 
        .finally(() => {
         ajaxSpinner.classList = "hidden";
        });
-    }, 3000);
+    }, 1500);
   });
 
 
@@ -130,26 +144,4 @@ fetch(`https://images-api.nasa.gov/search?q=${moon}`)
 
 //     });
 
-//kontrollera links är en array innan man försöker visa dator
-
-// fetch(url)
-//     .then((response) => response.json())
-//     .then((data) => {
-//         console.log(data.collection)
-//         let items = data.collection.items
-//         items.forEach(item => {
-//             console.log(item)
-//             let img = new Image()
-//             img.src = item.links[0].href
-//             card.appendChild(img)
-//         });
-//     })
-
-//card.innerHTML = `<img src="${pictures}" alt="Girl in a jacket" width="500" height="600">`
-// document.body.innerHTML += `<img src="${pictures}" alt="Girl in a jacket" width="500" height="600">`
-
-
-
-
-
-//getNASA()
+//kontrollera links är en array innan man försöker visa dat
